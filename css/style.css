@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Belanosima&family=Roboto:wght@900&display=swap');
+:root{
+    --main-bg-color:#0d1214;
+    --main-txt-color:#fff;
+    --main-title-color:#FFAB00;
+    --main-bx-bg-color:#212425;
+    --main-highlight-txt-color:#00d26a;/*#1de9b6; /*#00E676;*/
+    --highlight-txt-color:#AA00FF;
+
+}
+html, body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+    font-family: 'Roboto', sans-serif;
+}
+.container-custom{
+    position: relative; /* Cambia 'absolute' a 'relative' si las secciones deben seguir un flujo de documento normal */
+    padding: 0px 10%;
+    width: 100vw; /* vw significa 'viewport width' */
+    height: 100vh; /* vh significa 'viewport height' */
+    overflow: auto; /* Añade barras de desplazamiento si el contenido es más grande que la sección */
+}
+.board-title{
+    font-size: 3rem;
+    color: var(--main-title-color);
+}
+.custom-card{
+   /*  background: rgba(80, 8, 116, 0.08) !important;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5) !important; */
+    background: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5) !important;
+    /*custom*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.item{
+    font-size: 2.5rem;
+}
+.item-name{
+    color: var(--main-txt-color);
+}
+.item-score{
+    color: var(--main-highlight-txt-color);
+}
+/*ruleta box*/
+.container .card .ruleta-box{
+    padding: 0px 25%;
+}
+.circle-button-ruleta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 70px;
+    width: 70px;
+    transform: translate(-50%, -50%);
+    background-color: #212425;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+/*particles style*/
+#particles-js{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+}
+
+@media all and (min-width: 1024px) and (max-width: 1280px) {
+
+ }
+
+@media all and (min-width: 768px) and (max-width: 1024px) {
+    .board-title{
+        font-size: 3.5rem;
+    }
+    .item{
+        font-size: 2.5rem;
+    }
+    .circle-button-ruleta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 70px;
+        width: 70px;
+        transform: translate(-50%, -50%);
+        background-color: #212425;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 50%;
+    }
+ }
+
+@media all and (min-width: 480px) and (max-width: 768px) {
+    .board-title{
+        font-size: 3rem;
+    }
+    .item{
+        font-size: 2rem;
+    }
+    .circle-button-ruleta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 50px;
+        width: 50px;
+        transform: translate(-50%, -50%);
+        background-color: #212425;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 50%;
+    }
+ }
+
+@media all and (min-width: 380px) and (max-width: 480px) { 
+    .board-title{
+        font-size: 2.3rem;
+    }
+    .item{
+        font-size: 1.2rem;
+    }
+    .circle-button-ruleta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 45px;
+        width: 45px;
+        transform: translate(-50%, -50%);
+        background-color: #212425;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 50%;
+    }
+}
+@media all and (max-width: 380px) { 
+    .board-title{
+        font-size: 1.5rem;
+    }
+    .item{
+        font-size: 1rem;
+    }
+    .circle-button-ruleta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 40px;
+        width: 40px;
+        transform: translate(-50%, -50%);
+        background-color: #212425;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 50%;
+    }
+}
+.fade {
+    animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}

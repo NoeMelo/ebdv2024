@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EBDV 2024</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="./js//TweenMax.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+            <div class="container-fluid">
+              <img src="./images/idea.png" alt="" width="30" height="30">
+              <h1 class="navbar-brand" href="#">El taller de la luz</h1>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse text-center" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#seccion1">Puntaje General</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#seccion2">Puntaje Individual</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#seccion3">Ruleta</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container container-custom" id="seccion1">
+        <div class="card bg-dark custom-card">
+            <div class="card-header">
+                <h3 class="card-title text-center board-title">Puntaje Grupal</h3>
+            </div>
+            <div class="card-body">
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🦊</p></div>
+                    <div class="col-7"><p class="item-name">Valientes de David</p></div>
+                    <div class="col text-end"><p class="item-score">🥇 799</p></div>
+                </div>
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🦜</p></div>
+                    <div class="col-7"><p class="item-name">Las sunamitas</p></div>
+                    <div class="col text-end"><p class="item-score">🥈 797</p></div>
+                </div>
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🐹</p></div>
+                    <div class="col-7"><p class="item-name">Amigos de Jesús</p></div>
+                    <div class="col text-end"><p class="item-score">🥉 710</p></div>
+                </div>
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🐱</p></div>
+                    <div class="col-7"><p class="item-name">Los Galileos</p></div>
+                    <div class="col text-end"><p class="item-score">682</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container container-custom" id="seccion2">
+        <div class="card bg-dark custom-card">
+            <div class="card-header">
+                <h3 class="card-title text-center board-title">Puntaje Individual</h3>
+            </div>
+            <div class="card-body">
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🦜</p></div>
+                    <div class="col-7"><p class="item-name">Grecia Oré</p></div>
+                    <div class="col text-end"><p class="item-score">🥇 799</p></div>
+                </div>
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🦊</p></div>
+                    <div class="col-7"><p class="item-name">Josué Lovato</p></div>
+                    <div class="col text-end"><p class="item-score">🥈 797</p></div>
+                </div>
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🐹</p></div>
+                    <div class="col-7"><p class="item-name">Gaby Rueda</p></div>
+                    <div class="col text-end"><p class="item-score">🥉 710</p></div>
+                </div>
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🐱</p></div>
+                    <div class="col-7"><p class="item-name">Tania Rios</p></div>
+                    <div class="col text-end"><p class="item-score">682</p></div>
+                </div>
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🐻‍❄️</p></div>
+                    <div class="col-7"><p class="item-name">Luis Vinces</p></div>
+                    <div class="col text-end"><p class="item-score">660</p></div>
+                </div>
+                <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">🦖</p></div>
+                    <div class="col-7"><p class="item-name">Noe Melo</p></div>
+                    <div class="col text-end"><p class="item-score">633</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container container-custom" id="seccion3">
+        <div class="card bg-dark custom-card">
+            <div class="card-header">
+                <h3 class="card-title text-center board-title">Ruleta</h3>
+            </div>
+            <div class="card-body mb-5 ruleta-box">
+                <div class="row item">
+                    <canvas id="canvas" width="434" height="434">
+                        <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
+                    </canvas>
+                    <button class="circle-button-ruleta mt-2" id="run-wheel"><i class="bi bi-rocket-fill"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Footer-->
+    <footer class="bg-dark text-center text-lg-start mt-5">
+        <div class="container p-4">
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2024 Escuelita Dominical
+            <a class="text-secondary"  href="https://www.facebook.com/MMMSurquillo" target="_blank">Surquillo MMM</a>
+          </div>
+        </div>
+    </footer>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <!--Particles-->
+    <script src="js/particles.min.js"></script>
+    <script src="js/run_particles.js"></script>
+    <!--alerts-->
+    <script src="./js/sweetalert2.all.min.js"></script>
+    <!--Ruleta-->
+    <script src="./js/Winwheel.min.js"></script>
+    <script src="./js/run_wheel.js"></script>
+    <!--fade-->
+    <script src="./js/fade.js"></script>
+
+</body>
+</html>
