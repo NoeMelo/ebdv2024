@@ -173,11 +173,3 @@ body{
         border-radius: 50%;
     }
 }
-.fade {
-    animation: fadein 2s;
-}
-
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
