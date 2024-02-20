@@ -1,167 +1,103 @@
-let coloresPasteles = [
-    "#FFD1DC", // Rosa pastel
-    "#A2CFFE", // Azul pastel
-    "#77DD77", // Verde pastel
-    "#FDFD96", // Amarillo pastel
-    "#B39EB5", // Lila pastel
-    "#FFE5B4", // Melocotón pastel
-    "#CFFFAF", // Menta pastel
-    "#E6E6FA", // Lavanda pastel
-    "#FFB347", // Albaricoque pastel
-    "#FF7F50", // Coral pastel
-    "#FFD1DC", // Rosa pastel
-    "#A2CFFE", // Azul pastel
-    "#77DD77", // Verde pastel
-    "#FDFD96", // Amarillo pastel
-    "#B39EB5", // Lila pastel
-    "#FFE5B4", // Melocotón pastel
-    "#CFFFAF", // Menta pastel
-    "#E6E6FA", // Lavanda pastel
-    "#FFB347", // Albaricoque pastel
-    "#FF7F50"  // Coral pastel
-];
 
-let grupos = [
-    {
-        nombres: "Valientes de David",
-        puntaje: 95,
-        icon: "🕊️" // Paloma
-    },
-    {
-        nombres: "Amigos de Daniel",
-        puntaje: 88,
-        icon: "🐋" // Ballena
-    },
-    {
-        nombres: "Varones Galileos",
-        puntaje: 92,
-        icon: "🦁" // León
-    },
-    {
-        nombres: "Amigos de Jesús",
-        puntaje: 98,
-        icon: "🦚" // Pavo real
-    }
-];
+/**********************
+ * Google Sheets
+ *********************/
+let ruletaParticipantes;
+const sheetDataHandler_participantes = (sheetData) => {
 
-grupos.sort((a, b) => b.puntaje - a.puntaje);
+    sheetData.sort((a, b) => b.puntos - a.puntos);
+    ruletaParticipantes = new Ruleta(sheetData,'canvas_personas');
+    // leaderboards
+    let lb_asistentes = document.getElementById("leaderboard_asistentes");
+    load_items_grupos(sheetData, lb_asistentes);
+    //console.log(sheetData);
+  };
 
-let personas = [
-    {
-        nombres: "Grecia Oré",
-        puntaje: 95,
-        icon: "🦜" // Paloma
-    },
-    {
-        nombres: "Josué Lovato",
-        puntaje: 88,
-        icon: "🦊" // Ballena
-    },
-    {
-        nombres: "Gaby Rueda",
-        puntaje: 92,
-        icon: "🐹" // León
-    },
-    {
-        nombres: "Tania Rios",
-        puntaje: 98,
-        icon: "🐱" // Pavo real
-    },
-    {
-        nombres: "Noe Melo",
-        puntaje: 100,
-        icon: "🦖" // Cordero
-    },
-    {
-        nombres: "Luis Vinces",
-        puntaje: 100,
-        icon: "🐻‍❄️" // Cordero
-    }
-];
+let ruletaGrupos;
+const sheetDataHandler_grupos = (sheetData) => {
 
-personas.sort((a, b) => b.puntaje - a.puntaje);
+    sheetData.sort((a, b) => b.puntos - a.puntos);
+    ruletaGrupos = new Ruleta(sheetData,'canvas_grupos');
+    // leaderboards
+    let lb_grupos = document.getElementById("leaderboard_grupos");
+    load_items_grupos(sheetData, lb_grupos);
+    //console.log(sheetData);
+  };
+/**********************
+ * HTML painters 
+ *********************/
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-class Ruleta {
-    constructor(items, canvasId) {
-        this.data = items;
-        this.dibujo_id = canvasId;
-        this.ruletaNames = this.getRuletaNames();
-        this.dibujo = new Winwheel({
-            'canvasId'     : this.dibujo_id,
-            'numSegments'  : this.ruletaNames.length,     // Specify number of segments.
-            'outerRadius'  : 212,   // Set outer radius so wheel fits inside the background.
-            'textFontSize' : 20,    // Set font size as desired.28
-            'textAlignment' : 'outer',    // Set font size as desired.
-            'textDirection'   : 'reversed',
-            'textMargin'     : 15, 
-            'segments'     : this.ruletaNames, // Define segments including colour and text.
-            'animation'    :       // Specify the animation to use.
-            {
-                'type'     : 'spinToStop',
-                'duration' : 5,     // Duration in seconds.
-                'spins'    : 8,     // Number of complete spins.
-                'callbackFinished' : this.alertPrize
-            }
-        });
-        this.wheelSpinning = false;
-    }
-
-    // Método para obtener detalles del auto
-    getRuletaNames() {
-        let names = []
-        this.data.forEach(element => {
-            names.push({
-                'fillStyle' : coloresPasteles[getRandomInt(0,coloresPasteles.length)],
-                'text' : element.nombres
-            });
-        });
-        return names;
-    }
-
-    startSpin(){
-        // Ensure that spinning can't be clicked again while already running.
-        if (this.wheelSpinning == false) {
-            // Based on the power level selected adjust the number of spins for the wheel, the more times is has
-            // to rotate with the duration of the animation the quicker the wheel spins.
-            this.dibujo.animation.spins = 8;
-
-            // Begin the spin animation by calling startAnimation on the wheel object.
-            this.dibujo.startAnimation();
-
-            // Set to true so that power can't be changed and spin button re-enabled during
-            // the current animation. The user will have to reset before spinning again.
-            this.wheelSpinning = true;
+let load_items_participantes = (data, htmltag) =>{
+    let content = '';
+    var counter = 0;
+    data.forEach(element => {
+        var position = "";
+        if (counter == 0){
+            position = "🥇";
         }
-    }
-    // Método para cambiar el año del auto
-    alertPrize(indicatedSegment) {
-        // Do basic alert of the segment text. You would probably want to do something more interesting with this information.
-        // alert("You have won " + indicatedSegment.text);
-        Swal.fire({
-        title: indicatedSegment.text,
-        text: "¿Cuál es el reto?",
-        icon: "success"
-        });
-    }
-    
-    resetWheel(){
-        this.dibujo.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
-        this.dibujo.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
-        this.dibujo.draw();                // Call draw to render changes to the wheel.
-        this.wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
-    }
+        if(counter == 1){
+            position = "🥈";
+        }
+        if(counter == 2){
+            position = "🥉";
+        }
+        content +=`
+        <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">${element.icon}</p></div>
+                    <div class="col-7"><p class="item-name">${element.nombre} ${element.apellidos}</p></div>
+                    <div class="col text-end"><p class="item-score">${position} ${element.puntos}</p></div>
+        </div>
+        `;
+        counter +=1;
+    });
+    htmltag.innerHTML = content;
 }
+let load_items_grupos = (data, htmltag) =>{
+    let content = '';
+    var counter = 0;
+    data.forEach(element => {
+        var position = "";
+        if (counter == 0){
+            position = "🥇";
+        }
+        if(counter == 1){
+            position = "🥈";
+        }
+        if(counter == 2){
+            position = "🥉";
+        }
+        content +=`
+        <div class="row item">
+                    <div class="col-1 text-center mx-2"><p class="item-icon">${element.icon}</p></div>
+                    <div class="col-7"><p class="item-name">${element.nombre}</p></div>
+                    <div class="col text-end"><p class="item-score">${position} ${element.puntos}</p></div>
+        </div>
+        `;
+        counter +=1;
+    });
+    htmltag.innerHTML = content;
+}
+/**********************
+ * Onload 
+ *********************/
 
 window.onload = function() {
-    let ruletaGrupos = new Ruleta(grupos,'canvas_grupos');
-    let ruletaParticipantes = new Ruleta(personas,'canvas_personas');
-    document.getElementById("run-wheel-groups").addEventListener("click", function() {
+    // download data of spreadsheet
+    getSheetData({
+        sheetID: "1kLUdjEbjDm_RWo-ATNdTH2fVhWGoQgkYflyg4cMRsSc",
+        sheetName: "asistentes",
+        query: "",
+        callback: sheetDataHandler_participantes,
+      });
+      getSheetData({
+        sheetID: "1kLUdjEbjDm_RWo-ATNdTH2fVhWGoQgkYflyg4cMRsSc",
+        sheetName: "grupos",
+        query: "",
+        callback: sheetDataHandler_grupos,
+      });
+
+    // ruleta
+    document.getElementById("canvas_grupos").addEventListener("click", function() {
         
         if (ruletaGrupos.wheelSpinning == false){
             ruletaGrupos.startSpin();
@@ -170,7 +106,7 @@ window.onload = function() {
             ruletaGrupos.startSpin();
         }
     });
-    document.getElementById("run-wheel-persons").addEventListener("click", function() {
+    document.getElementById("canvas_personas").addEventListener("click", function() {
 
         if (ruletaParticipantes.wheelSpinning == false){
             ruletaParticipantes.startSpin();
@@ -180,3 +116,61 @@ window.onload = function() {
         }
     });
 }
+
+/* var grupos = [
+    {
+        nombres: "Valientes de David",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🕊️" // Paloma
+    },
+    {
+        nombres: "Amigos de Daniel",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🐋" // Ballena
+    },
+    {
+        nombres: "Varones Galileos",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🦁" // León
+    },
+    {
+        nombres: "Amigos de Jesús",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🦚" // Pavo real
+    }
+];
+
+grupos.sort((a, b) => b.puntaje - a.puntaje);
+
+let participantes = [
+    {
+        nombres: "Grecia Oré",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🦜" // Paloma
+    },
+    {
+        nombres: "Josué Lovato",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🦊" // Ballena
+    },
+    {
+        nombres: "Gaby Rueda",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🐹" // León
+    },
+    {
+        nombres: "Tania Rios",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🐱" // Pavo real
+    },
+    {
+        nombres: "Noe Melo",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🦖" // Cordero
+    },
+    {
+        nombres: "Luis Vinces",
+        puntaje: Math.floor(Math.random() * (200 - 100 + 1)) + 100,
+        icon: "🐻‍❄️" // Cordero
+    }
+]; */

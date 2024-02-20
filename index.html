@@ -44,7 +44,7 @@
             <div class="card-header">
                 <h3 class="card-title text-center board-title">Puntaje Grupal</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body" id="leaderboard_grupos">
                 <div class="row item">
                     <div class="col-1 text-center mx-2"><p class="item-icon">🦊</p></div>
                     <div class="col-7"><p class="item-name">Valientes de David</p></div>
@@ -73,7 +73,7 @@
             <div class="card-header">
                 <h3 class="card-title text-center board-title">Puntaje Individual</h3>
             </div>
-            <div class="card-body">
+            <div class="card-body" id="leaderboard_asistentes">
                 <div class="row item">
                     <div class="col-1 text-center mx-2"><p class="item-icon">🦜</p></div>
                     <div class="col-7"><p class="item-name">Grecia Oré</p></div>
@@ -117,7 +117,7 @@
                     <canvas id="canvas_grupos" width="434" height="434">
                         <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
                     </canvas>
-                    <button class="circle-button-ruleta mt-2" id="run-wheel-groups"><i class="bi bi-rocket-fill"></i></button>
+                    <!-- <button class="circle-button-ruleta mt-2" id="run-wheel-groups"><i class="bi bi-rocket-fill"></i></button> -->
                 </div>
             </div>
         </div>
@@ -132,7 +132,8 @@
                     <canvas id="canvas_personas" width="434" height="434">
                         <p style="{color: white}" align="center">Sorry, your browser doesn't support canvas. Please try another.</p>
                     </canvas>
-                    <button class="circle-button-ruleta mt-2" id="run-wheel-persons"><i class="bi bi-rocket-fill"></i></button>
+                    <!-- <img id="prizePointer_groups" src="./images/down.png" alt="V" /> -->
+                    <!-- <button class="circle-button-ruleta mt-2" id="run-wheel-persons"></button> -->
                 </div>
             </div>
         </div>
@@ -154,6 +155,10 @@
     <script src="./js/sweetalert2.all.min.js"></script>
     <!--Ruleta-->
     <script src="./js/Winwheel.min.js"></script>
+    <script src="./js/run_wheel.js"></script>
+    <!--Spreadsheet-->
+    <script src="./js/spreadsheet.js"></script>
+    <!--Main-->
     <script src="./js/index.js"></script>
 
 </body>

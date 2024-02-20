@@ -75,6 +75,15 @@ body{
     z-index: -1;
 }
 
+#prizePointer_groups {
+    position: absolute;
+    width: 60px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    color: #00d26a;
+}
+
 @media all and (min-width: 1024px) and (max-width: 1280px) {
 
  }
