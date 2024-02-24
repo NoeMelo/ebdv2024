@@ -19,7 +19,9 @@ body{
 }
 .container-custom{
     position: relative; /* Cambia 'absolute' a 'relative' si las secciones deben seguir un flujo de documento normal */
-    padding: 0px 10%;
+    /* padding: 0px 10%; */
+    /* margin:20% 10% 20% 0%; */
+    margin-top: 20%;
     width: 100vw; /* vw significa 'viewport width' */
     height: 100vh; /* vh significa 'viewport height' */
     overflow: auto; /* Añade barras de desplazamiento si el contenido es más grande que la sección */
@@ -34,9 +36,9 @@ body{
     background: rgba(255, 255, 255, 0.08) !important;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.5) !important;
     /*custom*/
-    top: 50%;
+/*     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 }
 .item{
     font-size: 2.5rem;
