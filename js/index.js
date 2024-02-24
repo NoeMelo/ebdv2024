@@ -86,7 +86,7 @@ window.onload = function() {
     getSheetData({
         sheetID: "1kLUdjEbjDm_RWo-ATNdTH2fVhWGoQgkYflyg4cMRsSc",
         sheetName: "asistentes",
-        query: "",
+        query: 'SELECT * WHERE C <> ""',
         callback: sheetDataHandler_participantes,
       });
       getSheetData({
